@@ -16,7 +16,7 @@ public class CheckInActivity extends SingleFragmentActivity {
         return intent;
     }
 
-    
+
     @Override
     protected Fragment createFragment() {
         UUID checkInID = (UUID)getIntent().getSerializableExtra(EXTRA_CHECKIN_ID);

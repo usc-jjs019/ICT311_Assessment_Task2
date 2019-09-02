@@ -22,7 +22,7 @@ public class CheckInList {
         return sCheckInList;
     }
 
-    public void addCrime(CheckIn c) {
+    public void addCheckIn(CheckIn c) {
         mCheckIns.add(c);
     }
 

@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class CrimeListFragment extends Fragment {
+public class CheckInListFragment extends Fragment {
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
     private boolean mSubtitleVisible;
@@ -32,7 +32,7 @@ public class CrimeListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_crime_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_checkin_list, container, false);
 
         mCrimeRecyclerView = (RecyclerView)view.findViewById(R.id.crime_recycler_view);
         mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -74,9 +74,9 @@ public class CrimeListFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item ) {
         switch (item.getItemId()) {
-            case R.id.new_crime:
+            case R.id.new_checkIn:
                 CheckIn checkIn = new CheckIn();
-                CheckInList.get(getActivity()).addCrime(checkIn);
+                CheckInList.get(getActivity()).addCheckIn(checkIn);
                 Intent intent = CrimeActivity.newIntent(getActivity(), checkIn.getId());
                 startActivity(intent);
                 return true;
@@ -126,11 +126,11 @@ public class CrimeListFragment extends Fragment {
         private CheckIn mCheckIn;
 
         public CrimeHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.list_item_crime, parent, false));
+            super(inflater.inflate(R.layout.list_item_checkin, parent, false));
             itemView.setOnClickListener(this);
 
-            mTitleTextView = (TextView)itemView.findViewById(R.id.crime_title);
-            mDateTextView = (TextView)itemView.findViewById(R.id.crime_date);
+            mTitleTextView = (TextView)itemView.findViewById(R.id.checkin_title);
+            mDateTextView = (TextView)itemView.findViewById(R.id.checkin_date);
         }
 
         @Override
