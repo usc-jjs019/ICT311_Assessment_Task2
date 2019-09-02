@@ -21,7 +21,7 @@ import java.util.UUID;
 
 public class CheckInFragment extends Fragment {
 
-    private static final String ARG_CRIME_ID = "crime_id";
+    private static final String ARG_CHECKIN_ID = "checkIn_id";
     private static final String DIALOG_DATE = "DialogDate";
 
     private static final int REQUEST_DATE = 0;
@@ -31,9 +31,9 @@ public class CheckInFragment extends Fragment {
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
 
-    public static CheckInFragment newInstance(UUID crimeId) {
+    public static CheckInFragment newInstance(UUID checkInId) {
         Bundle args = new Bundle();
-        args.putSerializable(ARG_CRIME_ID, crimeId);
+        args.putSerializable(ARG_CHECKIN_ID, checkInId);
 
         CheckInFragment fragment = new CheckInFragment();
         fragment.setArguments(args);
@@ -43,14 +43,14 @@ public class CheckInFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID crimeId = (UUID)getArguments().getSerializable(ARG_CRIME_ID);
-        mCheckIn = CheckInList.get(getActivity()).get(crimeId);
+        UUID checkInId = (UUID)getArguments().getSerializable(ARG_CHECKIN_ID);
+        mCheckIn = CheckInList.get(getActivity()).get(checkInId);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_checkin, parent, false);
-        mTitleField = (EditText) v.findViewById(R.id.crime_title);
+        mTitleField = (EditText) v.findViewById(R.id.checkin_title);
         mTitleField.setText(mCheckIn.getTitle());
         mTitleField.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence c, int start, int before, int count) {
@@ -64,7 +64,7 @@ public class CheckInFragment extends Fragment {
             }
         });
 
-        mDateButton = (Button)v.findViewById(R.id.crime_date);
+        mDateButton = (Button)v.findViewById(R.id.checkin_date);
         updateDate();
         mDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,13 +76,13 @@ public class CheckInFragment extends Fragment {
             }
         });
 
-        mSolvedCheckBox = (CheckBox)v.findViewById(R.id.crime_solved);
-        mSolvedCheckBox.setChecked(mCheckIn.isSolved());
-        mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mCheckIn.setSolved(isChecked);
-            }
-        });
+//        mSolvedCheckBox = (CheckBox)v.findViewById(R.id.crime_solved);
+//        mSolvedCheckBox.setChecked(mCheckIn.isSolved());
+//        mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                mCheckIn.setSolved(isChecked);
+//            }
+//        });
 
         return v;
     }
