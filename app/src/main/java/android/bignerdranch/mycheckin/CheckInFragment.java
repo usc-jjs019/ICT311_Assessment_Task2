@@ -34,7 +34,7 @@ public class CheckInFragment extends Fragment {
     private static final int REQUEST_CONTACT = 1;
     private static final int REQUEST_PHOTO = 2;
 
-    private CheckInList mCheckIn;
+    private CheckIn mCheckIn;
     private EditText mTitleField;
     private Button mDateButton;
     private File mPhotoFile;
@@ -60,8 +60,8 @@ public class CheckInFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID checkInId = (UUID) getArguments().getSerializable(ARG_CHECKIN_ID);
-        mCheckIn = CheckInList.get(getActivity()).get(checkInId);
+        UUID checkInID = (UUID) getArguments().getSerializable(ARG_CHECKIN_ID);
+        mCheckIn = CheckInList.get(getActivity()).getCheckIn(checkInID);
     }
 
     @Override
