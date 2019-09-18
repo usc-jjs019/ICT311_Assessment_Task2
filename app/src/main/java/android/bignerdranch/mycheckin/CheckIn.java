@@ -7,10 +7,16 @@ public class CheckIn {
     private UUID mId;
     private String mTitle;
     private Date mDate;
-    private boolean mSolved;
+    private String mPlace;
+    private double mLat;
+    private double mLong;
 
     public CheckIn() {
-        mId = UUID.randomUUID();
+        this(UUID.randomUUID());
+    }
+
+    public CheckIn(UUID id) {
+        mId = id;
         mDate = new Date();
     }
 
@@ -39,11 +45,31 @@ public class CheckIn {
         mDate = date;
     }
 
-    public boolean isSolved() {
-        return mSolved;
+    public double getLat() {
+        return mLat;
     }
 
-    public void setSolved(boolean solved) {
-        mSolved = solved;
+    public void setLat(double lat) {
+        mLat = lat;
+    }
+
+    public double getLon() {
+        return mLong;
+    }
+
+    public void setLon(double lon) {
+        mLong = lon;
+    }
+
+    public String getPhotoFilename() {
+        return "IMG_" + getId().toString() + ".jpg";
+    }
+
+    public String getPlace() {
+        return mPlace;
+    }
+
+    public void setPlace(String place) {
+        mPlace = place;
     }
 }

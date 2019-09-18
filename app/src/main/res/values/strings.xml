@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">MyCheckIn</string>
+    <string name="title_activity_checkin">CheckInActivity</string>
+    <string name="checkin_title_hint">Enter a title for the Check-In.</string>
+    <string name="checkin_title_label">Title</string>
+    <string name="checkin_details_label">Details</string>
+    <string name="checkin_title">Check-In</string>
+    <string name="date_picker_title">Date of Check-In</string>
+    <string name="new_checkin">New Check-In</string>
+    <string name="show_subtitle">Show Subtitle</string>
+    <string name="hide_subtitle">Hide Subtitle</string>
+    <string name="checkin_delete">Delete</string>
+    <string name="share_label">Share Check-In via</string>
+    <string name="checkin_location_label">Check-In Location</string>
+    <string name="checkin_location_text">Show Map</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

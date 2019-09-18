@@ -12,10 +12,16 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.io.File;
 import java.util.Date;
 import java.util.UUID;
 
@@ -25,11 +31,22 @@ public class CheckInFragment extends Fragment {
     private static final String DIALOG_DATE = "DialogDate";
 
     private static final int REQUEST_DATE = 0;
+    private static final int REQUEST_CONTACT = 1;
+    private static final int REQUEST_PHOTO = 2;
 
-    private CheckIn mCheckIn;
+    private CheckInList mCheckIn;
     private EditText mTitleField;
     private Button mDateButton;
-    private CheckBox mSolvedCheckBox;
+    private File mPhotoFile;
+    private TextView mLocationView;
+    private Button mMapButton;
+    private Button mShareButton;
+    private ImageButton mPhotoButton;
+    private ImageView mPhotoView;
+    private Button mDeleteButton;
+
+    private GoogleApiClient mClient;
+
 
     public static CheckInFragment newInstance(UUID checkInId) {
         Bundle args = new Bundle();
@@ -43,7 +60,7 @@ public class CheckInFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID checkInId = (UUID)getArguments().getSerializable(ARG_CHECKIN_ID);
+        UUID checkInId = (UUID) getArguments().getSerializable(ARG_CHECKIN_ID);
         mCheckIn = CheckInList.get(getActivity()).get(checkInId);
     }
 

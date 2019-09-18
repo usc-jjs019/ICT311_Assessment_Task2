@@ -7,11 +7,11 @@ import java.util.UUID;
 
 public class CheckInList {
     private static CheckInList sCheckInList;
-    private Context mAppContext;
+    private Context mContext;
     private List<CheckIn> mCheckIns;
 
     private CheckInList(Context context) {
-        mAppContext = context;
+        mContext = context.getApplicationContext();
         mCheckIns = new ArrayList<CheckIn>();
     }
 
