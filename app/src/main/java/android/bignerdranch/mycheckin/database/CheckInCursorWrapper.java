@@ -17,11 +17,13 @@ public class CheckInCursorWrapper extends CursorWrapper {
         String title = getString(getColumnIndex(CheckInDbSchema.CheckInTable.Cols.TITLE));
         long date = getLong(getColumnIndex(CheckInDbSchema.CheckInTable.Cols.DATE));
         String place = getString(getColumnIndex(CheckInDbSchema.CheckInTable.Cols.PLACE));
+        String details = getString(getColumnIndex(CheckInDbSchema.CheckInTable.Cols.DETAILS));
 
         CheckIn checkIn = new CheckIn(UUID.fromString(uuidString));
         checkIn.setTitle(title);
         checkIn.setDate(new Date(date));
         checkIn.setPlace(place);
+        checkIn.setDetails(details);
 
         return checkIn;
     }

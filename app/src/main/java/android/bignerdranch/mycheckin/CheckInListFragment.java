@@ -18,8 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class CheckInListFragment extends Fragment {
-    private RecyclerView mCrimeRecyclerView;
-    private CrimeAdapter mAdapter;
+    private RecyclerView mCheckInRecyclerView;
+    private CheckInAdapter mAdapter;
     private boolean mSubtitleVisible;
 
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
@@ -34,8 +34,8 @@ public class CheckInListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_checkin_list, container, false);
 
-        mCrimeRecyclerView = (RecyclerView)view.findViewById(R.id.checkin_recycler_view);
-        mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mCheckInRecyclerView = (RecyclerView)view.findViewById(R.id.checkin_recycler_view);
+        mCheckInRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         if (savedInstanceState != null) {
             mSubtitleVisible = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
@@ -61,7 +61,7 @@ public class CheckInListFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.fragment_crime_list, menu);
+        inflater.inflate(R.menu.fragment_checkin_list, menu);
 
         MenuItem subtitleItem = menu.findItem(R.id.show_subtitle);
         if (mSubtitleVisible) {
@@ -74,10 +74,10 @@ public class CheckInListFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item ) {
         switch (item.getItemId()) {
-            case R.id.new_checkIn:
+            case R.id.new_checkin:
                 CheckIn checkIn = new CheckIn();
                 CheckInList.get(getActivity()).addCheckIn(checkIn);
-                Intent intent = CrimeActivity.newIntent(getActivity(), checkIn.getId());
+                Intent intent = CheckInActivity.newIntent(getActivity(), checkIn.getId());
                 startActivity(intent);
                 return true;
             case R.id.show_subtitle:
@@ -92,8 +92,8 @@ public class CheckInListFragment extends Fragment {
 
     private void updateSubtitle() {
         CheckInList checkInList = CheckInList.get(getActivity());
-        int crimeCount = checkInList.getCheckIns().size();
-        String subtitle = getString(R.string.subtitle_format, crimeCount);
+        int checkInCount = checkInList.getCheckIns().size();
+        String subtitle = getString(R.string.subtitle_format, checkInCount);
 
         if (!mSubtitleVisible) {
             subtitle = null;
@@ -108,34 +108,36 @@ public class CheckInListFragment extends Fragment {
         List<CheckIn> checkIns = checkInList.getCheckIns();
 
         if (mAdapter == null) {
-            mAdapter = new CrimeAdapter(checkIns);
-            mCrimeRecyclerView.setAdapter(mAdapter);
+            mAdapter = new CheckInAdapter(checkIns);
+            mCheckInRecyclerView.setAdapter(mAdapter);
         } else {
             mAdapter.notifyDataSetChanged();
         }
 
         updateSubtitle();
 
-        mAdapter = new CrimeAdapter(checkIns);
-        mCrimeRecyclerView.setAdapter(mAdapter);
+        mAdapter = new CheckInAdapter(checkIns);
+        mCheckInRecyclerView.setAdapter(mAdapter);
     }
 
-    private class CrimeHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class CheckInHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView mTitleTextView;
         private TextView mDateTextView;
+        private TextView mDetailsTextView;
         private CheckIn mCheckIn;
 
-        public CrimeHolder(LayoutInflater inflater, ViewGroup parent) {
+        public CheckInHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_checkin, parent, false));
             itemView.setOnClickListener(this);
 
             mTitleTextView = (TextView)itemView.findViewById(R.id.checkin_title);
             mDateTextView = (TextView)itemView.findViewById(R.id.checkin_date);
+            mDetailsTextView = (TextView)itemView.findViewById(R.id.checkin_detail);
         }
 
         @Override
         public void onClick(View view) {
-            Intent intent = CrimeActivity.newIntent(getActivity(), mCheckIn.getId());
+            Intent intent = CheckInActivity.newIntent(getActivity(), mCheckIn.getId());
             startActivity(intent);
         }
 
@@ -146,22 +148,22 @@ public class CheckInListFragment extends Fragment {
         }
     }
 
-    private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder> {
+    private class CheckInAdapter extends RecyclerView.Adapter<CheckInHolder> {
         private List<CheckIn> mCheckIns;
 
-        public CrimeAdapter(List<CheckIn> checkIns) {
+        public CheckInAdapter(List<CheckIn> checkIns) {
             mCheckIns = checkIns;
         }
 
         @Override
-        public CrimeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public CheckInHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
 
-            return new CrimeHolder(layoutInflater, parent);
+            return new CheckInHolder(layoutInflater, parent);
         }
 
         @Override
-        public void onBindViewHolder(CrimeHolder holder, int position) {
+        public void onBindViewHolder(CheckInHolder holder, int position) {
             CheckIn checkIn = mCheckIns.get(position);
             holder.bind(checkIn);
         }

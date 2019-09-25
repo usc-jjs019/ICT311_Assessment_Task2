@@ -20,7 +20,8 @@ public class CheckInBaseHelper extends SQLiteOpenHelper {
                 CheckInTable.Cols.UUID + ", " +
                 CheckInTable.Cols.TITLE + ", " +
                 CheckInTable.Cols.DATE + ", " +
-                CheckInTable.Cols.PLACE + ")"
+                CheckInTable.Cols.PLACE + ", " +
+                CheckInTable.Cols.DETAILS +")"
         );
     }
 
