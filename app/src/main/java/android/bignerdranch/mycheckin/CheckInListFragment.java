@@ -149,7 +149,7 @@ public class CheckInListFragment extends Fragment {
             mCheckIn = checkIn;
             mTitleTextView.setText(mCheckIn.getTitle());
             mDateTextView.setText(mCheckIn.getDate().toString());
-            mPlaceTextView.setText(mCheckIn.getDetails());
+            mPlaceTextView.setText(mCheckIn.getPlace());
         }
     }
 

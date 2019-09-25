@@ -204,7 +204,7 @@ public class CheckInFragment extends Fragment {
         mMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MapsActivity.class);
+                Intent intent = new Intent(getActivity(), MapsActivity2.class);
                 intent.putExtra("latitude", mCheckIn.getLat());
                 intent.putExtra("longitude", mCheckIn.getLon());
                 startActivity(intent);
