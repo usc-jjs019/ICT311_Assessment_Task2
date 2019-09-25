@@ -156,6 +156,34 @@ public class CheckInFragment extends Fragment {
             }
         });
 
+        mPlaceField = (EditText) v.findViewById(R.id.checkin_place);
+        mPlaceField.setText(mCheckIn.getPlace());
+        mPlaceField.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence c, int start, int before, int count) {
+                mCheckIn.setPlace(c.toString());
+            }
+
+            public void beforeTextChanged(CharSequence c, int start, int count, int after) {
+            }
+
+            public void afterTextChanged(Editable c) {
+            }
+        });
+
+        mDetailsField = (EditText) v.findViewById(R.id.checkin_details);
+        mDetailsField.setText(mCheckIn.getDetails());
+        mDetailsField.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence c, int start, int before, int count) {
+                mCheckIn.setDetails(c.toString());
+            }
+
+            public void beforeTextChanged(CharSequence c, int start, int count, int after) {
+            }
+
+            public void afterTextChanged(Editable c) {
+            }
+        });
+
         mDateButton = (Button)v.findViewById(R.id.checkin_date);
         updateDate();
         mDateButton.setOnClickListener(new View.OnClickListener() {
@@ -183,7 +211,7 @@ public class CheckInFragment extends Fragment {
             }
         });
 
-        mShareButton = (Button) v.findViewById(R.id.checkin_share);
+        mShareButton = (Button) v.findViewById(R.id.checkin_report);
         mShareButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_SEND);

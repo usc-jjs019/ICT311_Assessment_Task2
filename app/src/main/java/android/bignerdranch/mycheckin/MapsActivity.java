@@ -52,7 +52,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void updateUI() {
-        LatLng myPoint = new LatLng(latitude, longitude);
+        LatLng myPoint = new LatLng(mlatitude, mlongitude);
 
         MarkerOptions myMarker = new MarkerOptions().position(myPoint).title("Crime Location");
 

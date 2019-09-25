@@ -1,6 +1,7 @@
 package android.bignerdranch.mycheckin;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -85,7 +86,10 @@ public class CheckInListFragment extends Fragment {
                 getActivity().invalidateOptionsMenu();
                 updateSubtitle();
                 return true;
-            default:
+            case R.id.help:
+                intent = HelpWebPage.newIntent(getActivity(), Uri.parse("https://www.wikiHow.com/Check-In-on-Facebook"));
+                startActivity(intent);
+                default:
                 return super.onOptionsItemSelected(item);
         }
     }
@@ -123,7 +127,7 @@ public class CheckInListFragment extends Fragment {
     private class CheckInHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView mTitleTextView;
         private TextView mDateTextView;
-        private TextView mDetailsTextView;
+        private TextView mPlaceTextView;
         private CheckIn mCheckIn;
 
         public CheckInHolder(LayoutInflater inflater, ViewGroup parent) {
@@ -132,7 +136,7 @@ public class CheckInListFragment extends Fragment {
 
             mTitleTextView = (TextView)itemView.findViewById(R.id.checkin_title);
             mDateTextView = (TextView)itemView.findViewById(R.id.checkin_date);
-            mDetailsTextView = (TextView)itemView.findViewById(R.id.checkin_detail);
+            mPlaceTextView = (TextView)itemView.findViewById(R.id.checkin_place);
         }
 
         @Override
@@ -145,6 +149,7 @@ public class CheckInListFragment extends Fragment {
             mCheckIn = checkIn;
             mTitleTextView.setText(mCheckIn.getTitle());
             mDateTextView.setText(mCheckIn.getDate().toString());
+            mPlaceTextView.setText(mCheckIn.getDetails());
         }
     }
 
