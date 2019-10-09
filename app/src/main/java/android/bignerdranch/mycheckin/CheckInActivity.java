@@ -10,9 +10,9 @@ public class CheckInActivity extends SingleFragmentActivity {
 
     private static final String EXTRA_CHECKIN_ID = "com.bignerdranch.android.mycheckin.checkin_id";
 
-    public static Intent newIntent(Context packageContext, UUID crimeId) {
+    public static Intent newIntent(Context packageContext, UUID checkinId) {
         Intent intent = new Intent(packageContext, CheckInActivity.class);
-        intent.putExtra(EXTRA_CHECKIN_ID, crimeId);
+        intent.putExtra(EXTRA_CHECKIN_ID, checkinId);
         return intent;
     }
 
