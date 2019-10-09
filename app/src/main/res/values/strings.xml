@@ -12,7 +12,7 @@
     <string name="new_checkin">New Check-In</string>
     <string name="show_subtitle">Show Subtitle</string>
     <string name="hide_subtitle">Hide Subtitle</string>
-    <string name="subtitle_format">%1$d crimes</string>
+    <string name="subtitle_format">%1$d check-ins</string>
     <string name="checkin_delete">Delete</string>
     <string name="checkin_report">%1$s!
         The check-in was created on %2$s at %3$s.</string>

@@ -101,6 +101,9 @@ public class CheckInList {
         values.put(CheckInDbSchema.CheckInTable.Cols.TITLE, checkIn.getTitle());
         values.put(CheckInDbSchema.CheckInTable.Cols.DATE, checkIn.getDate().getTime());
         values.put(CheckInDbSchema.CheckInTable.Cols.PLACE, checkIn.getPlace());
+        values.put(CheckInDbSchema.CheckInTable.Cols.DETAILS, checkIn.getDetails());
+        values.put(CheckInDbSchema.CheckInTable.Cols.LATITUDE, checkIn.getLat());
+        values.put(CheckInDbSchema.CheckInTable.Cols.LONGITUDE, checkIn.getLon());
 
         return values;
     }
