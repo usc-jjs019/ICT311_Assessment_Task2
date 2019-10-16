@@ -28,23 +28,6 @@ public class HelpWebPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helpwebpage);
 
-        mProgressBar = findViewById(R.id.progress_bar);
-        mProgressBar.setMax(100);
-        mWebView.setWebChromeClient(new WebChromeClient() {
-            public void onProgressChanged(WebView webView, int newProgress) {
-                if (newProgress == 100) {
-                    mProgressBar.setVisibility(View.GONE);
-                } else {
-                    mProgressBar.setVisibility(View.VISIBLE);
-                    mProgressBar.setProgress(newProgress);
-                }
-            }
-            public void onReceivedTitle(WebView webView, String title) {
-                getSupportActionBar().setSubtitle(title);
-            }
-        });
-
-
         mWebView = findViewById(R.id.webview);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setWebViewClient(new WebViewClient() {
